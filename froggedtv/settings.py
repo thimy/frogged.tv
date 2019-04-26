@@ -25,7 +25,7 @@ SECRET_KEY = "5hboipydi=o=-loi$dg5)1!g-9(c0%tq06m76cs!+w(=y+b2ba"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", ".frogged.tv"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".frogged.tv"]
 
 
 # Application definition
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "posts",
+    "www",
 ]
 
 MIDDLEWARE = [
