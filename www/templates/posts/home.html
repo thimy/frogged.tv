@@ -1,5 +1,42 @@
 {% extends 'layouts/main.html' %}
+{% load static %}
+
+{% block extracss %}
+  <link href="{% static 'css/home.css' %}" rel="stylesheet">
+  <link href="{% static 'css/post.css' %}" rel="stylesheet">
+{% endblock extracss %}
+
+{% block hero %}
+  <div class="container">
+    <div class="stream">
+      <iframe class="stream__player" src="https://player.twitch.tv/?channel=froggedtv" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
+      <iframe class="stream__chat" src="https://www.twitch.tv/embed/froggedtv/chat" frameborder="0" scrolling="no" height="500" width="350"></iframe>
+    </div>
+  </div>
+{% endblock hero %}
 
 {% block content %}
-Bienvenue Juna
+  <div class="container">
+    <h2>News</h2>
+    <div class="post__grid">
+      {% for post in posts %}
+        <div class="post">
+          <img class="post__cover" src="
+            {% if post.cover %}
+              {{ post.cover.url }}
+            {% else %}
+              {% static 'images/tinker.jpeg' %}
+            {% endif %}" alt="{{ post.title }}"/>
+          <div class="post__info">
+            {% if post.category %}
+              <div class="post__category">{{ post.category }}</div>
+            {% endif %}
+            <div class="post__publication-date">{{ post.published_date }}</div>
+            <h3 class="post__title"><a href="">{{ post.title }}</a></h3>
+            <div class="post__author">par {{ post.author }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
 {% endblock content %}
