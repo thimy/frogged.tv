@@ -77,11 +77,11 @@ WSGI_APPLICATION = "froggedtv.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "froggedtv",
-        "USER": "froggedtv_juna",
-        "PASSWORD": "",
-        "HOST": "localhost",
-        "PORT": "",
+        "NAME": os.getenv('FTV_DB_NAME', "froggedtv"),
+        "USER": os.getenv('FTV_DB_USER', "froggedtv_juna"),
+        "PASSWORD": os.getenv('FTV_DB_PASSWORD', ""),
+        "HOST": os.getenv('FTV_DB_HOST', "localhost"),
+        "PORT": os.getenv('FTV_DB_PORT', ""),
     }
 }
 
