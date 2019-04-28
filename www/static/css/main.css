@@ -46,6 +46,11 @@ a, a:hover, a:visited {
   flex-direction: row;
 }
 
+.navbar__home {
+  display: flex;
+  align-items: center;
+}
+
 .navbar__logo {
   height: 50px;
 }
