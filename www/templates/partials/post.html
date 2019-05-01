@@ -1,0 +1,18 @@
+{% load static %}
+
+<a href="" class="post">
+  <img class="post__cover" src="
+    {% if post.cover %}
+      {{ post.cover.url }}
+    {% else %}
+      {% static 'images/tinker.jpeg' %}
+    {% endif %}" alt="{{ post.title }}"/>
+  <div class="post__info">
+    {% if post.category %}
+      <div class="post__category">{{ post.category }}</div>
+    {% endif %}
+    <div class="post__publication-date">{{ post.published_date }}</div>
+    <h3 class="post__title">{{ post.title }}</h3>
+    <div class="post__author">par {{ post.author }}</div>
+  </div>
+</a>
