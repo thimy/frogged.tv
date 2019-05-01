@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import time
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "martor",
     "www",
 ]
 
@@ -77,11 +80,11 @@ WSGI_APPLICATION = "froggedtv.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv('FTV_DB_NAME', "froggedtv"),
-        "USER": os.getenv('FTV_DB_USER', "froggedtv_juna"),
-        "PASSWORD": os.getenv('FTV_DB_PASSWORD', ""),
-        "HOST": os.getenv('FTV_DB_HOST', "localhost"),
-        "PORT": os.getenv('FTV_DB_PORT', ""),
+        "NAME": os.getenv("FTV_DB_NAME", "froggedtv"),
+        "USER": os.getenv("FTV_DB_USER", "froggedtv_juna"),
+        "PASSWORD": os.getenv("FTV_DB_PASSWORD", ""),
+        "HOST": os.getenv("FTV_DB_HOST", "localhost"),
+        "PORT": os.getenv("FTV_DB_PORT", ""),
     }
 }
 
@@ -119,6 +122,22 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
+import time
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MARTOR_UPLOAD_PATH = "uploads/images/{}".format(time.strftime("%Y/%m/%d/"))
+MARTOR_UPLOAD_URL = "/api/uploader/"  # change to local uploader
+
+# Maximum Upload Image
+# 2.5MB - 2621440
+# 5MB - 5242880
+# 10MB - 10485760
+# 20MB - 20971520
+# 50MB - 5242880
+# 100MB 104857600
+# 250MB - 214958080
+# 500MB - 429916160
+MAX_IMAGE_UPLOAD_SIZE = 5242880  # 5MB
+
+# Media Path
+MEDIA_URL = "/uploads/"
+os.path.join(BASE_DIR, "uploads")
