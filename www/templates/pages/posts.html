@@ -1,0 +1,40 @@
+{% extends 'layouts/main.html' %}
+{% load static %}
+
+{% block extracss %}
+  <link href="{% static 'css/posts.css' %}" rel="stylesheet">
+  <link href="{% static 'css/post.css' %}" rel="stylesheet">
+{% endblock extracss %}
+
+{% block hero %}
+  <div class="hero">
+    <div class="container">
+      <h1>News</h1>
+    </div>
+  </div>
+{% endblock hero %}
+
+{% block content %}
+  <div class="container">
+    <div class="post__grid">
+      {% for post in posts %}
+        <div class="post">
+          <img class="post__cover" src="
+            {% if post.cover %}
+              {{ post.cover.url }}
+            {% else %}
+              {% static 'images/tinker.jpeg' %}
+            {% endif %}" alt="{{ post.title }}"/>
+          <div class="post__info">
+            {% if post.category %}
+              <div class="post__category">{{ post.category }}</div>
+            {% endif %}
+            <div class="post__publication-date">{{ post.published_date }}</div>
+            <h3 class="post__title"><a href="">{{ post.title }}</a></h3>
+            <div class="post__author">par {{ post.author }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content%}
