@@ -1,6 +1,7 @@
 .stream {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   height: 85vh;
   margin-top: -5em;
 }

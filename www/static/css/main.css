@@ -29,12 +29,50 @@ a, a:hover, a:visited {
   text-decoration: none;
 }
 
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .navbar {
   padding: 1em 0;
 }
 
+.navbar__container {
+  flex-direction: row;
+}
+
+.navbar__home {
+  display: flex;
+  align-items: center;
+}
+
 .navbar__logo {
   height: 50px;
+}
+
+.nav__items {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.nav__item {
+  margin-left: 1em;
+  text-shadow: 0;
+  transition: text-shadow 0.2s ease-out;
+}
+
+.nav__item:hover {
+  text-shadow: 0 0 10px var(--light-blue), 0 0 5px var(--white);
+}
+
+.nav__item--active {
+  text-shadow: 0 0 10px var(--red), 0 0 5px var(--white);
 }
 
 main {
@@ -69,10 +107,4 @@ footer .icon {
   fill: var(--white);
   height: 50px;
   width: 50px;
-}
-
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
 }
