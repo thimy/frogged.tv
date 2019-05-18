@@ -7,11 +7,11 @@ def home(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by(
         "-published_date"
     )[:5]
-    return render(request, "posts/home.html", {"posts": posts})
+    return render(request, "pages/home.html", {"posts": posts})
 
 
 def posts(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by(
-        "published_date"
+        "-published_date"
     )
-    return render(request, "posts/posts.html", {"posts": posts})
+    return render(request, "pages/posts.html", {"posts": posts})
