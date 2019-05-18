@@ -25,6 +25,16 @@ body {
   background-position: top center;
   background-size: cover;
   font-family: 'Fira Sans';
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Rift-DemiItalic";
 }
 
 a, a:hover, a:visited {
@@ -39,6 +49,10 @@ a, a:hover, a:visited {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .navbar {
@@ -79,12 +93,20 @@ a, a:hover, a:visited {
 }
 
 .hero {
-  height: 20em;
+  min-height: 15em;
+  display: flex;
+  padding: 2em 0;
+  align-items: center;
+}
+
+.hero.has-cover {
+  padding-bottom: 12em;
 }
 
 .hero h1 {
   text-align: center;
-  margin-top: 2em;
+  font-size: 3em;
+  margin: 0;
 }
 
 main {
