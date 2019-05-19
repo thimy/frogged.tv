@@ -1,6 +1,7 @@
 import os
 import json
 import uuid
+import logging
 
 from django.shortcuts import render
 from django.utils import timezone
@@ -14,6 +15,31 @@ from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 
 from martor.utils import LazyEncoder
+
+
+logging.config.dictConfig(
+    {
+        "version": 1,
+        "disable_existing_loggers": False,
+        "formatters": {
+            "console": {"format": "%(name)-12s %(levelname)-8s %(message)s"},
+            "file": {"format": "%(asctime)s %(name)-12s %(levelname)-8s %(message)s"},
+        },
+        "handlers": {
+            "console": {"class": "logging.StreamHandler", "formatter": "console"},
+            "file": {
+                "level": "DEBUG",
+                "class": "logging.FileHandler",
+                "formatter": "file",
+                "filename": "/tmp/debug.log",
+            },
+        },
+        "loggers": {"": {"level": "DEBUG", "handlers": ["console", "file"]}},
+    }
+)
+
+# This retrieves a Python logging instance (or creates it)
+logger = logging.getLogger(__name__)
 
 
 @login_required
