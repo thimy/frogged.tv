@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import time
 
+from dotenv import load_dotenv
+
+load_dotenv(verbose=True)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -141,3 +144,5 @@ MAX_IMAGE_UPLOAD_SIZE = 5242880  # 5MB
 # Media Path
 MEDIA_URL = "/uploads/"
 os.path.join(BASE_DIR, "uploads")
+
+STEAM_API_KEY = os.getenv("STEAM_API_KEY")
