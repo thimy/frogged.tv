@@ -76,3 +76,8 @@ def posts(request):
         "-published_date"
     )
     return render(request, "pages/posts.html", {"posts": posts})
+
+
+def post(request, pk):
+    post = Post.objects.get(pk=pk)
+    return render(request, "pages/post.html", {"post": post})

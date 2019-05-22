@@ -1,6 +1,6 @@
 {% load static %}
 
-<a href="" class="post">
+<a href="{% url 'post' pk=post.pk %}" class="post">
   <img class="post__cover" src="
     {% if post.cover %}
       {{ post.cover.url }}

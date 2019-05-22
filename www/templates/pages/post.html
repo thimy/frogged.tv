@@ -1,0 +1,30 @@
+{% extends 'layouts/main.html' %}
+{% load static %}
+{% load martortags %}
+
+{% block extracss %}
+  <link href="{% static 'css/posts.css' %}" rel="stylesheet">
+  <link href="{% static 'css/post.css' %}" rel="stylesheet">
+{% endblock extracss %}
+
+{% block hero %}
+  <div class="hero{% if post.cover %} has-cover{% endif %}">
+    <div class="container">
+      <h1>{{ post.title }}</h1>
+      <p class="text-center post__meta">par <a href="">{{ post.author }}</a> le <time>{{ post.published_date }}</time></p>
+    </div>
+  </div>
+{% endblock hero %}
+
+{% block content %}
+  <div class="container">
+    {% if post.cover %}
+    <div class="cover">
+      <img src="{{ post.cover.url }}" alt ="{{ post.title }}" />
+    </div>
+    {% endif %}
+    <div class="markdown">
+      {{ post.text|safe_markdown }}
+    </div>
+  </div>
+{% endblock content%}
