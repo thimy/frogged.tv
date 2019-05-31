@@ -1,9 +1,13 @@
-from ...models import Hero, Item
+from ...models import Hero, Item, PatchVersion
 from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
 
 import requests
 import logging
+
+
+def create_patches():
+    PatchVersion.objects.update_or_create(id=0, defaults={"version_number": "7.22"})
 
 
 def update_heroes():
@@ -60,5 +64,6 @@ class Command(BaseCommand):
     help = "Update heroes in database"
 
     def handle(self, *args, **kwargs):
+        create_patches()
         update_heroes()
         update_items()

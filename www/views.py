@@ -5,10 +5,16 @@ import logging
 
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from .models import Post, Emission
+from .models import (
+    Post,
+    Emission,
+    EmissionSubmission,
+    VingtkmmrSubmission,
+    TaymaputeSubmission,
+)
 
 from django.conf import settings
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
@@ -140,3 +146,29 @@ def post(request, pk):
 def emissions(request):
     emissions = Emission.objects.all()
     return render(request, "pages/emissions.html", {"emissions": emissions})
+
+
+def emission(request, pk):
+    emission = Emission.objects.get(pk=pk)
+    submissions = EmissionSubmission.objects.all()
+    subpage = "pages/submissions.html"
+    if emission.title == "20k mmr sous les mers":
+        subpage = "partials/vingtkmmr.html"
+        submissions = VingtkmmrSubmission.objects.all()
+    if emission.title == "Taymapute":
+        subpage = "partials/taymapute.html"
+        submissions = TaymaputeSubmission.objects.all()
+    return render(
+        request,
+        "pages/emission.html",
+        {"emission": emission, "submissions": submissions, "subpage": subpage},
+    )
+
+
+def submission_vote(request):
+    data = json.loads(request.body.decode("utf-8"))
+    user = request.user
+    submission = EmissionSubmission.objects.get(pk=data.get("submission_id"))
+    score = submission.vote(data.get("type"), user)
+    data = {"action": data.get("type"), "score": score}
+    return JsonResponse(data)

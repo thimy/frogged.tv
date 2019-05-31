@@ -51,3 +51,7 @@ python3 manage.py createsuperuser --username <name>
 ```
 python3 manage.py runserver 8000
 ```
+## Import heroes and items
+```
+python3 manage.py dota_static
+```
