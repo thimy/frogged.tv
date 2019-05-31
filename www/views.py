@@ -5,7 +5,7 @@ import logging
 
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from .models import Post
+from .models import Post, Emission
 
 from django.conf import settings
 from django.http import HttpResponse
@@ -135,3 +135,8 @@ def posts(request):
 def post(request, pk):
     post = Post.objects.get(pk=pk)
     return render(request, "pages/post.html", {"post": post})
+
+
+def emissions(request):
+    emissions = Emission.objects.all()
+    return render(request, "pages/emissions.html", {"emissions": emissions})

@@ -1,0 +1,14 @@
+{% load static %}
+
+<a href="{% url 'emission' pk=emission.pk %}" class="emission">
+  <img class="emission__cover" src="
+    {% if emission.cover %}
+      {{ emission.cover.url }}
+    {% else %}
+      {% static 'images/tinker.jpeg' %}
+    {% endif %}" alt="{{ emission.title }}"/>
+  <div class="emission__info">
+    <h3 class="emission__title">{{ emission.title }}</h3>
+    <div class="emission__description">{{ emission.description }}</div>
+  </div>
+</a>

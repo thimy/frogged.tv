@@ -8,6 +8,7 @@ urlpatterns = [
     path("", views.home, name="home"),
     path("posts", views.posts, name="posts"),
     path("post/<int:pk>/", views.post, name="post"),
+    path("emissions", views.emissions, name="emissions"),
     url(r"^api/uploader/$", markdown_uploader, name="markdown_uploader_page"),
     path("logout/", views.logout_page, name="logout"),
     path("signup/", views.signup, name="signup"),

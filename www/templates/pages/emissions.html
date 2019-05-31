@@ -1,0 +1,25 @@
+{% extends 'layouts/main.html' %}
+{% load static %}
+{% load martortags %}
+
+{% block extracss %}
+  <link href="{% static 'css/emissions.css' %}" rel="stylesheet">
+{% endblock extracss %}
+
+{% block hero %}
+  <div class="hero has-cover">
+    <div class="container">
+      <h1>Émissions</h1>
+    </div>
+  </div>
+{% endblock hero %}
+
+{% block content %}
+  <div class="container">
+    <div class="emission__grid">
+      {% for emission in emissions %}
+        {% include 'partials/emission.html' with emission=emission %}
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content%}

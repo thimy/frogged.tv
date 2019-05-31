@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db import models
-from .models import Post, Hero, Item
+from .models import Post, Hero, Item, PatchVersion, Emission
 from martor.widgets import AdminMartorWidget
 
 
@@ -11,3 +11,5 @@ class PostAdmin(admin.ModelAdmin):
 admin.site.register(Post, PostAdmin)
 admin.site.register(Hero)
 admin.site.register(Item)
+admin.site.register(PatchVersion)
+admin.site.register(Emission)
