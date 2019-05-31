@@ -1,3 +1,9 @@
 from .static import Hero, Item
 from .post import Post
-from .emission import Emission, EmissionSubmission, Vingtkmmr, PatchVersion
+from .emission import (
+    Emission,
+    EmissionSubmission,
+    PatchVersion,
+    VingtkmmrSubmission,
+    TaymaputeSubmission,
+)
