@@ -1,0 +1,14 @@
+.cover {
+  margin-top: -15em;
+  overflow: hidden;
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient( to bottom, var(--dark-grey), rgba(0, 0, 0, 0) ) 10;
+  box-shadow: 0 0 2px 0 #000;
+}
+
+.cover img {
+  width: 100%;
+  height: 20em;
+  object-fit: cover;
+}

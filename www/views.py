@@ -140,3 +140,8 @@ def post(request, pk):
 def emissions(request):
     emissions = Emission.objects.all()
     return render(request, "pages/emissions.html", {"emissions": emissions})
+
+
+def emission(request, pk):
+    emission = Emission.objects.get(pk=pk)
+    return render(request, "pages/emission.html", {"emission": emission})
