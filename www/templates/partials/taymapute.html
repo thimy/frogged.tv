@@ -1,0 +1,56 @@
+{% load submissions %}
+<div class="submission taymapute">
+  <div class="submission__header">
+    <h3 class="submission__title">{{ submission.title }}</h3>
+    <p>Par {{ submission.author }}</p>
+    <p>{{ submission.description }}</p>
+  </div>
+  <div class="submission__content">
+    <img class="submission__hero" src="{{ submission.hero.portrait_lg }}" alt="{{ submission.hero.name }}" />
+    <img class="submission__item1" src="{{ submission.item_1.image }}" />
+    <img class="submission__item2" src="{{ submission.item_2.image }}" />
+    <img class="submission__item3" src="{{ submission.item_3.image }}" />
+    <img class="submission__item4" src="{{ submission.item_4.image }}" />
+    <img class="submission__item5" src="{{ submission.item_5.image }}" />
+    <img class="submission__item6" src="{{ submission.item_6.image }}" />
+  </div>
+  <div class="submission__footer">
+    <div>
+      <button class="action submission__up" onclick="vote({{ submission.id }}, 'UP')">⬆︎
+      </button>
+      <span id="score" class="submission__score">{% submission_score submission %}</span>
+      <button class="action submission__down" onclick="vote({{ submission.id }}, 'DOWN')">⬇︎</button>
+    </div>
+    <div>
+      <span class="action submission__fav">♥︎</span>
+    </div>
+  </div>
+</div>
+
+{% block extrajs %}
+  <script>
+    var vote = function(id, value) {
+      let xhr = new XMLHttpRequest()
+      xhr.onload = function(e) {
+        if (xhr.readyState==4 && xhr.status==200){
+          const score = document.getElementById("score")
+          score.innerHTML = JSON.parse(xhr.response).score
+        }
+        else if (xhr.status === 404) {
+          alert("Oh no, it does not exist!");
+        }
+        else if (xhr.status === 403) {
+          alert("Oh no, it does not exist!");
+        }
+      };
+      xhr.open('POST', "http://"
+         + self.location.host + '/submission_vote/', true);
+      xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}')
+      xhr.setRequestHeader("Content-type", "application/json")
+      xhr.send(JSON.stringify({
+        submission_id: id,
+        type: value
+      }));
+    }
+  </script>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'layouts/main.html' %}
+{% load static %}
+{% load martortags %}
+
+{% block extracss %}
+  <link href="{% static 'css/emission.css' %}" rel="stylesheet">
+{% endblock extracss %}
+
+{% block hero %}
+  <div class="hero{% if emission.cover %} has-cover{% endif %}">
+    <div class="container">
+      <h1>{{ emission.title }}</h1>
+      <p class="emission__meta">{{ emission.description }}</p>
+    </div>
+  </div>
+{% endblock hero %}
+
+{% block content %}
+  <div class="container">
+    <div class="submission__grid">
+      {% for submission in submissions %}
+        {% include subpage with submission=submission %}
+      {% endfor %}
+      {% for submission in submissions %}
+        {% include subpage with submission=submission %}
+      {% endfor %}
+      {% for submission in submissions %}
+        {% include subpage with submission=submission %}
+      {% endfor %}
+      {% for submission in submissions %}
+        {% include subpage with submission=submission %}
+      {% endfor %}
+      {% for submission in submissions %}
+        {% include subpage with submission=submission %}
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content%}

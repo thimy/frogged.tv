@@ -1,8 +1,5 @@
-.emission__grid {
-  margin-top: -13em;
-}
-
-.emission {
+a.emission {
+  color: var(--white);
   width: 100%;
   position: relative;
   background-color: rgba(0, 0, 0, 0.5);
@@ -20,6 +17,10 @@
       rgba(0, 0, 0, 0)
     ) 10;
   box-shadow: 0 0 2px 0 #000;
+}
+
+.emission + .emission {
+  margin-top: 2em;
 }
 
 .emission__cover {
