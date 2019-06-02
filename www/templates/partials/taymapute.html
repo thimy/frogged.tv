@@ -1,0 +1,26 @@
+<div class="submission taymapute">
+  <h3 class="submission__title">{{ submission.title }}</h3>
+  <div class="submission__content">
+    <img class="submission__hero" src="{{ submission.hero.portrait_vert }}" alt="{{ submission.hero.name }}" />
+    <img class="submission__item1" src="{{ submission.item_1.image }}" />
+    <img class="submission__item2" src="{{ submission.item_2.image }}" />
+    <img class="submission__item3" src="{{ submission.item_3.image }}" />
+    <img class="submission__item4" src="{{ submission.item_4.image }}" />
+    <img class="submission__item5" src="{{ submission.item_5.image }}" />
+    <img class="submission__item6" src="{{ submission.item_6.image }}" />
+  </div>
+  <div class="submission__footer">
+    <div class="submission__up">
+      <span class="icon"></span>
+    </div>
+    <div class="submission__down">
+      <span class="icon"></span>
+    </div>
+    <div class="submission__fav">
+      <span class="icon"></span>
+    </div>
+    <div class="submission__done {% if submission.done %}done{% endif %}">
+      <span class="icon"></span>
+    </div>
+  </div>
+</div>

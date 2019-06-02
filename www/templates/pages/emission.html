@@ -22,8 +22,22 @@
       <img src="{{ emission.cover.url }}" alt ="{{ emission.title }}" />
     </div>
     {% endif %}
-    <div class="markdown">
-      {{ emission.text|safe_markdown }}
+    <div class="submission__grid">
+      {% for submission in submissions %}
+        {% include subpage with submission=submission %}
+      {% endfor %}
+      {% for submission in submissions %}
+        {% include subpage with submission=submission %}
+      {% endfor %}
+      {% for submission in submissions %}
+        {% include subpage with submission=submission %}
+      {% endfor %}
+      {% for submission in submissions %}
+        {% include subpage with submission=submission %}
+      {% endfor %}
+      {% for submission in submissions %}
+        {% include subpage with submission=submission %}
+      {% endfor %}
     </div>
   </div>
 {% endblock content%}

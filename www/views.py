@@ -5,7 +5,13 @@ import logging
 
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from .models import Post, Emission
+from .models import (
+    Post,
+    Emission,
+    EmissionSubmission,
+    VingtkmmrSubmission,
+    TaymaputeSubmission,
+)
 
 from django.conf import settings
 from django.http import HttpResponse
@@ -144,4 +150,13 @@ def emissions(request):
 
 def emission(request, pk):
     emission = Emission.objects.get(pk=pk)
-    return render(request, "pages/emission.html", {"emission": emission})
+    submissions = EmissionSubmission.objects.all()
+    subpage = "pages/submissions.html"
+    if emission.title == "20k mmr sous les mers":
+        subpage = "partials/vingtkmmr.html"
+        submissions = VingtkmmrSubmission.objects.all()
+    return render(
+        request,
+        "pages/emission.html",
+        {"emission": emission, "submissions": submissions, "subpage": subpage},
+    )

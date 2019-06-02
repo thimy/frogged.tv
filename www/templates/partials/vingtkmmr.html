@@ -1,0 +1,22 @@
+<div class="submission vingtkmmr">
+  <h3 class="submission__title">{{ submission.title }}</h3>
+  <div class="submission__content">
+
+    <img class="submission__hero" src="{{ submission.hero_1.portrait_lg }}" alt="{{ submission.hero_1.name }}" />
+    <img class="submission__hero" src="{{ submission.hero_2.portrait_lg }}" alt="{{ submission.hero_2.name }}" />
+  </div>
+  <div class="submission__footer">
+    <div class="submission__up">
+      <span class="icon"></span>
+    </div>
+    <div class="submission__down">
+      <span class="icon"></span>
+    </div>
+    <div class="submission__fav">
+      <span class="icon"></span>
+    </div>
+    <div class="submission__done {% if submission.done %}done{% endif %}">
+      <span class="icon"></span>
+    </div>
+  </div>
+</div>

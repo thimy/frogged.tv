@@ -6,37 +6,42 @@ import requests
 import logging
 
 
-def create_patches():
-    PatchVersion.objects.update_or_create(
-        "version_number": "7.22"
-    )
-
-
 def create_emissions():
     emissions = [
         {
             "id": 0,
             "title": "20k mmr sous les mers",
+            "slug": "20kmmr",
             "description": "Choisissez le prochain duo pour YouYou et v0ja !",
-            "submission_type": "1",
+            "cover": "",
         },
         {
             "id": 1,
             "title": "Taymapute",
+            "slug": "taymapute",
             "description": "Créez des builds sur des héros que devra jouer YouYou dans son émission",
-            "submission_type": "2",
+            "cover": "",
         },
     ]
     print(emissions)
     for e in emissions:
         obj, created = Emission.objects.update_or_create(
             id=int(e["id"]),
-            defaults={
-                "title": e["title"],
-                "description": e["description"],
-                "submission_type": e["submission_type"],
-            },
+            defaults={"title": e["title"], "description": e["description"]},
         )
+
+
+def create_submissions():
+    submissions = [
+        {
+            "id": 0,
+            "title": "Poison",
+            "patch_version": "7.22",
+            "emission": 0,
+            "hero_1": "npc_dota_hero_viper",
+            "hero_2": "npc_dota_hero_venomancer",
+        }
+    ]
 
 
 class Command(BaseCommand):

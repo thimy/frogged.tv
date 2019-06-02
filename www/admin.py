@@ -16,10 +16,21 @@ class PostAdmin(admin.ModelAdmin):
     formfield_overrides = {models.TextField: {"widget": AdminMartorWidget}}
 
 
+class EmissionAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug": ("title",)}
+
+
+#
+# class VingtkmmrSubmissionAdmin(admin.ModelAdmin):
+#     prepopulated_fields = {
+#         "patch_version": PatchVersion.objects.latest("id").version_number
+#     }
+
+
 admin.site.register(Post, PostAdmin)
 admin.site.register(Hero)
 admin.site.register(Item)
 admin.site.register(PatchVersion)
-admin.site.register(Emission)
+admin.site.register(Emission, EmissionAdmin)
 admin.site.register(VingtkmmrSubmission)
 admin.site.register(TaymaputeSubmission)

@@ -12,3 +12,105 @@
   height: 20em;
   object-fit: cover;
 }
+
+.submission__grid {
+  display: grid;
+  grid-gap: 2em;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.submission {
+  border: 1px solid var(--grey);
+  border-radius: 2px;
+  padding: 1em;
+}
+
+.submission__title {
+  margin-top: 0;
+}
+
+.submission__content {
+  display: grid;
+}
+
+.submission__hero {
+  width: 100%;
+}
+
+.submission__footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+.submission__footer .icon {
+  display: inline-block;
+  background-color: var(--grey);
+  height: 0.5em;
+  width: 0.5em;
+  position: relative;
+  margin-left: 0.5em;
+}
+
+.submission__footer .icon::before,
+.submission__footer .icon::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+.submission__footer .submission__up .icon {
+  transform: translateY(50%);
+}
+
+.submission__footer .submission__up .icon::before {
+  content: '';
+  transform: translateX(-25%) translateY(-100%);
+  border-top: 0.5em solid transparent;
+	border-left: 0.5em solid transparent;
+	border-right: 0.5em solid transparent;
+  border-bottom: 0.5em solid var(--grey);
+}
+
+.submission__footer .submission__down .icon {
+  transform: translateY(-50%);
+}
+
+.submission__footer .submission__down .icon::after {
+  content: '';
+  transform: translateX(-25%) translateY(50%);
+  border-bottom: 0.5em solid transparent;
+	border-left: 0.5em solid transparent;
+	border-right: 0.5em solid transparent;
+  border-top: 0.5em solid var(--grey);
+}
+
+.submission__footer .submission__fav .icon {
+  transform: rotate(45deg);
+}
+
+.submission__footer .submission__fav .icon::before {
+  content: '';
+  height: 0.5em;
+  width: 0.5em;
+  background-color: var(--grey);
+  border-radius: 50%;
+  transform: translate(-25%);
+}
+
+.submission__footer .submission__fav .icon::after {
+  content: '';
+  height: 0.5em;
+  width: 0.5em;
+  background-color: var(--grey);
+  border-radius: 50%;
+  transform: translateX(25%) translateY(-25%);
+}
+
+.vingtkmmr .submission__content {
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 1fr;
+}
