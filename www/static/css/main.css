@@ -43,18 +43,22 @@ h2 {
 }
 
 
-a, a:hover, a:visited {
-  color: var(--white);
+a, a:focus, a:visited {
+  color: var(--red);
   text-decoration: none;
+  border-bottom: 3px solid var(--red);
+}
+
+a:hover {
+  border: 0;
 }
 
 .container {
   width: 90%;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .text-center {
@@ -65,9 +69,10 @@ a, a:hover, a:visited {
   flex-direction: row;
 }
 
-.navbar__home {
+a.navbar__home {
   display: flex;
   align-items: center;
+  border: 0;
 }
 
 .navbar__logo {
@@ -82,6 +87,7 @@ nav {
   font-family: "Rift-Demi";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--white);
 }
 
 .nav__items {
@@ -104,31 +110,30 @@ nav {
   text-shadow: 0 0 10px var(--light-red), 0 0 5px var(--white);
 }
 
+.nav__item a {
+  color: var(--white);
+  border: 0;
+}
+
 .nav__item--active a {
   color: var(--red);
 }
 
 .hero {
-  min-height: 15em;
+  min-height: 10em;
   display: flex;
-  padding: 2em 0;
-  align-items: center;
-}
-
-.hero.has-cover {
-  padding-bottom: 12em;
+  align-items: end;
 }
 
 .hero h1 {
-  text-align: center;
   font-size: 3em;
-  margin: 0;
   color: var(--white);
+  margin-bottom: 0.5em;
 }
 
 main {
   flex-grow: 1;
-  padding: 5em 0 5em;
+  padding: 2em 0;
   box-shadow: 0 0px 15px 0px #000;
   background: var(--white);
 }

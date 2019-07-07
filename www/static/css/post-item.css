@@ -6,7 +6,7 @@
   margin-bottom: 2em;
 }
 
-.post {
+a.post {
   position: relative;
   background-color: rgba(0, 0, 0, 0.5);
   height: 250px;
@@ -22,6 +22,7 @@
       var(--dark-grey),
       rgba(0, 0, 0, 0)
     ) 10;
+  color: var(--white);
 }
 
 a.post:hover {
