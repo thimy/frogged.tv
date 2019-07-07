@@ -3,6 +3,7 @@
   grid-gap: 2em;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: repeat(2, 250px);
+  margin-bottom: 2em;
 }
 
 .post {
@@ -21,12 +22,11 @@
       var(--dark-grey),
       rgba(0, 0, 0, 0)
     ) 10;
-  box-shadow: 0 0 2px 0 #000;
 }
 
 a.post:hover {
   /* border: 1px solid var(--white); */
-  box-shadow: 0 0 4px 4px var(--light-blue);
+  box-shadow: 0 5px 15px 2px rgba(229, 34, 7, 0.5);
 }
 
 .post:nth-child(3n+1) {
