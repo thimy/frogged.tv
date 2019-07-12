@@ -1,0 +1,62 @@
+a.button,
+a.button:focus,
+a.button:active,
+a.button:visited,
+button.button,
+button.button:focus,
+button.button:active,
+button.button:visited,
+input[type="submit"],
+input[type="submit"]:focus,
+input[type="submit"]:active,
+input[type="submit"]:visited,
+input[type="button"],
+input[type="button"]:focus,
+input[type="button"]:active,
+input[type="button"]:visited {
+  color: var(--white);
+  background-color: var(--red);
+  border: 0;
+  font-family: "Rift-DemiItalic";
+  font-size: 1em;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.5em 1em;
+  border-radius: 1em 0 1em 0;
+}
+
+a.button:hover,
+button.button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+  box-shadow: 0 5px 20px 2px rgba(229, 34, 7, 0.5);
+}
+
+a.button-outline,
+a.button-outline:focus,
+a.button-outline:active,
+a.button-outline:visited,
+button.button-outline,
+button.button-outline:focus,
+button.button-outline:active,
+button.button-outline:visited,
+input[type="submit"].button-outline,
+input[type="submit"].button-outline:focus,
+input[type="submit"].button-outline:active,
+input[type="submit"].button-outline:visited,
+input[type="button"].button-outline,
+input[type="button"].button-outline:focus,
+input[type="button"].button-outline:active,
+input[type="button"].button-outline:visited {
+  color: var(--red);
+  background-color: transparent;
+  border: 2px solid var(--red);
+  font-family: "Rift-DemiItalic";
+  font-size: 1em;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.5em 1em;
+  border-radius: 1em 0 1em 0;
+}

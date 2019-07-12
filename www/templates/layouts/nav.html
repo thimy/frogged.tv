@@ -2,16 +2,16 @@
 <header class="navbar" role="navigation">
   <div class="navbar__container container">
     <a class="navbar__home" href="{% url 'home' %}">
-      <img class="navbar__logo" src="{% static 'images/froggedtv.svg' %}"
+      <img class="navbar__logo" src="{% static 'images/froggedtv-inline.svg' %}"
         alt="frogged.tv" />
     </a>
     <nav>
       <ul class="nav__items">
-        <li class="nav__item{% if request.path == '/' %} nav__item--active{% endif %}">
-          <a href="{% url 'home' %}">Accueil</a>
-        </li>
         <li class="nav__item{% if request.path == '/posts' %} nav__item--active{% endif %}">
           <a href="{% url 'posts' %}">Articles</a>
+        </li>
+        <li class="nav__item{% if request.path == '/login' %} nav__item--active{% endif %}">
+          <a href="{% url 'posts' %}">Se connecter</a>
         </li>
       </ul>
     </nav>

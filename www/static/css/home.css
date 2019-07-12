@@ -3,11 +3,15 @@
   font-size: 2em;
 }
 
+.stream__container {
+  height: 14em;
+}
+
 .stream {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  height: 16em;
+  margin-top: 2em;
 }
 
 .stream iframe {
@@ -17,7 +21,7 @@
 }
 
 main {
-  padding-top: 20em;
+  padding-top: 15em;
 }
 
 @media (min-width: 700px) {
