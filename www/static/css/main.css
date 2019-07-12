@@ -162,6 +162,10 @@ footer li + li {
   margin-left: 1em;
 }
 
+footer a {
+  border: 0;
+}
+
 footer .icon {
   fill: var(--white);
   height: 30px;

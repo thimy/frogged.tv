@@ -2,8 +2,11 @@
   padding-bottom: 2em;
 }
 
+.hero h1 {
+  margin-bottom: 0;
+}
+
 .cover {
-  margin-top: -15em;
   overflow: hidden;
   border-width: 1px;
   border-style: solid;
