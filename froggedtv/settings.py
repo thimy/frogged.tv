@@ -142,3 +142,7 @@ MEDIA_URL = "/uploads/"
 os.path.join(BASE_DIR, "uploads")
 
 STEAM_API_KEY = os.getenv("STEAM_API_KEY")
+
+
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "home"

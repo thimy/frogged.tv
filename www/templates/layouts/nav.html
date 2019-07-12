@@ -10,9 +10,18 @@
         <li class="nav__item{% if request.path == '/posts' %} nav__item--active{% endif %}">
           <a href="{% url 'posts' %}">Articles</a>
         </li>
-        <li class="nav__item{% if request.path == '/login' %} nav__item--active{% endif %}">
-          <a href="{% url 'posts' %}">Se connecter</a>
+        {% if user.is_authenticated %}
+        <li class="nav__item{% if request.path == '/account' %} nav__item--active{% endif %}">
+          <a href="">{{ user }}</a>
         </li>
+        <li class="nav__item{% if request.path == '/logout' %} nav__item--active{% endif %}">
+          <a href="{% url 'logout' %}">Déconnexion</a>
+        </li>
+        {% else %}
+        <li class="nav__item{% if request.path == '/login' %} nav__item--active{% endif %}">
+          <a href="{% url 'login' %}">Connexion</a>
+        </li>
+        {% endif %}
       </ul>
     </nav>
   </div>

@@ -3,16 +3,19 @@ import json
 import uuid
 import logging
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import Post
 
 from django.conf import settings
 from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from .forms import SignUpForm
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
+from django.conf import settings
 
 from martor.utils import LazyEncoder
 
@@ -40,6 +43,30 @@ logging.config.dictConfig(
 
 # This retrieves a Python logging instance (or creates it)
 logger = logging.getLogger(__name__)
+
+
+def signup(request):
+    if request.method == "POST":
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get("username")
+            raw_password = form.cleaned_data.get("password1")
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect("home")
+        else:
+            form = SignUpForm(request.POST)
+            logger.info("fail")
+    else:
+        form = SignUpForm()
+    return render(request, "pages/signup.html", {"form": form})
+
+
+@login_required
+def logout_page(request):
+    logout(request)
+    return redirect(settings.LOGOUT_REDIRECT_URL)
 
 
 @login_required
@@ -91,10 +118,11 @@ def markdown_uploader(request):
 
 
 def home(request):
+    user = request.user
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by(
         "-published_date"
     )[:5]
-    return render(request, "pages/home.html", {"posts": posts})
+    return render(request, "pages/home.html", {"posts": posts, "user": user})
 
 
 def posts(request):
