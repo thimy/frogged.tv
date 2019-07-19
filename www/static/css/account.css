@@ -1,0 +1,21 @@
+.form__container {
+  width: 35em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form__group + .form__group {
+  margin-top: 1em;
+}
+
+.form__group label {
+  display: block;
+}
+
+.form__group + .button {
+  margin-top: 2em;
+}
+
+.error {
+  color: var(--red);
+}
