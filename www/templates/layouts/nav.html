@@ -3,7 +3,6 @@
   <div class="navbar__container container">
     <a class="navbar__home" href="{% url 'home' %}">
       <img class="navbar__logo" src="{% static 'images/froggedtv-inline.svg' %}"
-      <img class="navbar__logo" src="{% static 'images/froggedtv.svg' %}"
         alt="frogged.tv" />
     </a>
     <nav>
@@ -11,9 +10,21 @@
         <li class="nav__item{% if request.path == '/posts' %} nav__item--active{% endif %}">
           <a href="{% url 'posts' %}">Articles</a>
         </li>
-        <li class="nav__item{% if request.path == '/emissions' or '/emision' %} nav__item--active{% endif %}">
+        <li class="nav__item{% if request.path == '/emissions' %} nav__item--active{% endif %}">
           <a href="{% url 'emissions' %}">Émissions</a>
         </li>
+        {% if user.is_authenticated %}
+        <li class="nav__item{% if request.path == '/account' %} nav__item--active{% endif %}">
+          <a href="">{{ user }}</a>
+        </li>
+        <li class="nav__item{% if request.path == '/logout' %} nav__item--active{% endif %}">
+          <a href="{% url 'logout' %}">Déconnexion</a>
+        </li>
+        {% else %}
+        <li class="nav__item{% if request.path == '/login' %} nav__item--active{% endif %}">
+          <a href="{% url 'login' %}">Connexion</a>
+        </li>
+        {% endif %}
       </ul>
     </nav>
   </div>

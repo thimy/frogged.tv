@@ -123,11 +123,11 @@ nav {
   min-height: 10em;
   display: flex;
   align-items: end;
+  color: var(--white);
 }
 
 .hero h1 {
   font-size: 3em;
-  color: var(--white);
   margin-bottom: 0.5em;
 }
 

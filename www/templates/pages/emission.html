@@ -10,18 +10,13 @@
   <div class="hero{% if emission.cover %} has-cover{% endif %}">
     <div class="container">
       <h1>{{ emission.title }}</h1>
-      <p class="text-center emission__meta">{{ emission.description }}</p>
+      <p class="emission__meta">{{ emission.description }}</p>
     </div>
   </div>
 {% endblock hero %}
 
 {% block content %}
   <div class="container">
-    {% if emission.cover %}
-    <div class="cover">
-      <img src="{{ emission.cover.url }}" alt ="{{ emission.title }}" />
-    </div>
-    {% endif %}
     <div class="submission__grid">
       {% for submission in submissions %}
         {% include subpage with submission=submission %}

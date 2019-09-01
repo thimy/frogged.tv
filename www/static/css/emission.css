@@ -1,3 +1,7 @@
+.emission__meta {
+  margin-top: 0;
+}
+
 .cover {
   margin-top: -15em;
   overflow: hidden;
@@ -21,12 +25,29 @@
 
 .submission {
   border: 1px solid var(--grey);
-  border-radius: 2px;
-  padding: 1em;
+  border-radius: 10px 0;
+  padding: 1em 1em 0.5em;
+  background: #000;
+  color: #fff;
+}
+
+.submission__header {
+  margin-bottom: 0.5em;
 }
 
 .submission__title {
   margin-top: 0;
+  margin-bottom: 0.5em;
+  background-color: var(--red);
+  margin-left: -1.1em;
+  margin-bottom: 0.5em;
+  padding: 0.5em;
+  display: inline-block;
+  color: var(--white);
+}
+
+.submission__header p {
+  margin: 0;
 }
 
 .submission__content {
@@ -40,77 +61,27 @@
 .submission__footer {
   display: flex;
   justify-content: space-between;
-  margin-top: 1em;
+  margin-top: 0.5em;
+  font-size: 0.75em;
 }
 
-.submission__footer .icon {
-  display: inline-block;
-  background-color: var(--grey);
-  height: 0.5em;
-  width: 0.5em;
-  position: relative;
-  margin-left: 0.5em;
+.submission__footer .action {
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  color: #fff;
 }
 
-.submission__footer .icon::before,
-.submission__footer .icon::after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  width: 0;
-  height: 0;
-}
-
-.submission__footer .submission__up .icon {
-  transform: translateY(50%);
-}
-
-.submission__footer .submission__up .icon::before {
-  content: '';
-  transform: translateX(-25%) translateY(-100%);
-  border-top: 0.5em solid transparent;
-	border-left: 0.5em solid transparent;
-	border-right: 0.5em solid transparent;
-  border-bottom: 0.5em solid var(--grey);
-}
-
-.submission__footer .submission__down .icon {
-  transform: translateY(-50%);
-}
-
-.submission__footer .submission__down .icon::after {
-  content: '';
-  transform: translateX(-25%) translateY(50%);
-  border-bottom: 0.5em solid transparent;
-	border-left: 0.5em solid transparent;
-	border-right: 0.5em solid transparent;
-  border-top: 0.5em solid var(--grey);
-}
-
-.submission__footer .submission__fav .icon {
-  transform: rotate(45deg);
-}
-
-.submission__footer .submission__fav .icon::before {
-  content: '';
-  height: 0.5em;
-  width: 0.5em;
-  background-color: var(--grey);
-  border-radius: 50%;
-  transform: translate(-25%);
-}
-
-.submission__footer .submission__fav .icon::after {
-  content: '';
-  height: 0.5em;
-  width: 0.5em;
-  background-color: var(--grey);
-  border-radius: 50%;
-  transform: translateX(25%) translateY(-25%);
+.submission__footer .submission__score {
+  margin: 0 0.5em;
 }
 
 .vingtkmmr .submission__content {
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
+  grid-gap: 0.5em;
+}
+
+.taymapute .submission__hero {
+  grid-column: 1/4;
 }

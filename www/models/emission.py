@@ -1,8 +1,12 @@
 import time
 
 from django.db import models
+from django.contrib.auth.models import User
 from .static import Hero, Item
 from .patch import PatchVersion
+from django.utils import timezone
+
+from django_und.models import VoteMixin
 
 
 class Emission(models.Model):
@@ -17,16 +21,47 @@ class Emission(models.Model):
         return self.title
 
 
-class EmissionSubmission(models.Model):
+class EmissionSubmission(VoteMixin, models.Model):
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, default=0, blank=False, null=True
+    )
     title = models.CharField(max_length=60)
-    upvotes = models.IntegerField(default=0)
-    downvotes = models.IntegerField(default=0)
     done = models.BooleanField(default="FALSE")
     patch_version = models.ForeignKey(PatchVersion, on_delete=models.CASCADE)
     emission = models.ForeignKey(Emission, on_delete=models.CASCADE, default=0)
+    description = models.CharField(max_length=500)
+    created_date = models.DateTimeField(default=timezone.now)
+    upvotes = models.ManyToManyField(User, related_name="user_up+")
+    downvotes = models.ManyToManyField(User, related_name="user_down+")
 
     def __str__(self):
         return self.title
+
+    def vote(self, type, user):
+        print(self.upvotes.all())
+        print(type)
+        if type == "UP":
+            if user in self.upvotes.all():
+                self.upvotes.remove(user)
+            else:
+                if user in self.downvotes.all():
+                    self.downvotes.remove(user)
+                self.upvotes.add(user)
+        elif type == "DOWN":
+            if user in self.downvotes.all():
+                self.downvotes.remove(user)
+            else:
+                if user in self.upvotes.all():
+                    self.upvotes.remove(user)
+                self.downvotes.add(user)
+        else:
+            print("Cannot apply vote")
+        return self.get_score()
+
+    def get_score(self):
+        up = self.upvotes.count() or 0
+        down = self.downvotes.count() or 0
+        return up - down
 
 
 class VingtkmmrSubmission(EmissionSubmission):

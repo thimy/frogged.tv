@@ -1,8 +1,5 @@
-.emission__grid {
-  margin-top: -13em;
-}
-
-.emission {
+a.emission {
+  color: var(--white);
   width: 100%;
   position: relative;
   background-color: rgba(0, 0, 0, 0.5);

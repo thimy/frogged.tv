@@ -13,4 +13,5 @@ urlpatterns = [
     url(r"^api/uploader/$", markdown_uploader, name="markdown_uploader_page"),
     path("logout/", views.logout_page, name="logout"),
     path("signup/", views.signup, name="signup"),
+    path("submission_vote/", views.submission_vote, name="submission_vote"),
 ]
