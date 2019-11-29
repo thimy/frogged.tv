@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "martor",
     "www",
-    "django_und",
 ]
 
 MIDDLEWARE = [
