@@ -8,6 +8,12 @@ from .models import (
     Emission,
     VingtkmmrSubmission,
     TaymaputeSubmission,
+    Player,
+    Team,
+    Season,
+    Division,
+    Match,
+    Game,
 )
 from martor.widgets import AdminMartorWidget
 
@@ -34,3 +40,11 @@ admin.site.register(PatchVersion)
 admin.site.register(Emission, EmissionAdmin)
 admin.site.register(VingtkmmrSubmission)
 admin.site.register(TaymaputeSubmission)
+
+
+admin.site.register(Player)
+admin.site.register(Team)
+admin.site.register(Season)
+admin.site.register(Division)
+admin.site.register(Match)
+admin.site.register(Game)

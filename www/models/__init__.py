@@ -8,3 +8,4 @@ from .emission import (
     VingtkmmrSubmission,
     TaymaputeSubmission,
 )
+from .league import Player, Team, Season, Division, Match, Game

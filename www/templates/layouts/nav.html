@@ -13,6 +13,9 @@
         <li class="nav__item{% if request.path == '/emissions' %} nav__item--active{% endif %}">
           <a href="{% url 'emissions' %}">Émissions</a>
         </li>
+        <li class="nav__item{% if request.path == '/league' %} nav__item--active{% endif %}">
+          <a href="{% url 'league' %}">FTV League</a>
+        </li>
         {% if user.is_authenticated %}
         <li class="nav__item{% if request.path == '/account' %} nav__item--active{% endif %}">
           <a href="">{{ user }}</a>

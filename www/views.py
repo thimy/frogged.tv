@@ -11,6 +11,12 @@ from .models import (
     EmissionSubmission,
     VingtkmmrSubmission,
     TaymaputeSubmission,
+    Player,
+    Season,
+    Division,
+    Team,
+    Match,
+    Game,
 )
 
 from django.conf import settings
@@ -172,3 +178,12 @@ def submission_vote(request):
     score = submission.vote(data.get("type"), user)
     data = {"action": data.get("type"), "score": score}
     return JsonResponse(data)
+
+
+def league(request):
+    season = Season.objects.all()[0]
+    return render(
+        request,
+        "pages/league/index.html",
+        {"season": season, "divisions": Division.objects.filter(season__id=season.id)},
+    )

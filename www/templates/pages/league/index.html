@@ -1,0 +1,48 @@
+{% extends 'layouts/main.html' %}
+{% load static %}
+{% load martortags %}
+
+{% block extracss %}
+  <link href="{% static 'css/emissions.css' %}" rel="stylesheet">
+{% endblock extracss %}
+
+{% block hero %}
+  <div class="hero has-cover">
+    <div class="container">
+      <h1>FroggedTV League - {{ league.name }}</h1>
+    </div>
+  </div>
+{% endblock hero %}
+
+{% block content %}
+  <div class="container">
+    {% for division in divisions %}
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Équipe</th>
+            <th>Matches</th>
+            <th>Victoires</th>
+            <th>Égalités</th>
+            <th>Défaites</th>
+            <th>Points</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for team in teams %}
+          <tr>
+            <td>{{ team }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% endfor %}
+  </div>
+{% endblock content%}
