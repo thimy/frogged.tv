@@ -1,48 +1,57 @@
 {% extends 'layouts/main.html' %}
 {% load static %}
-{% load martortags %}
 
 {% block extracss %}
-  <link href="{% static 'css/emissions.css' %}" rel="stylesheet">
+  <link href="{% static 'css/league.css' %}" rel="stylesheet">
 {% endblock extracss %}
 
 {% block hero %}
   <div class="hero has-cover">
     <div class="container">
-      <h1>FroggedTV League - {{ league.name }}</h1>
+      <h1>FroggedTV League - {{ season.name }}</h1>
     </div>
   </div>
 {% endblock hero %}
 
 {% block content %}
   <div class="container">
-    {% for division in divisions %}
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Équipe</th>
-            <th>Matches</th>
-            <th>Victoires</th>
-            <th>Égalités</th>
-            <th>Défaites</th>
-            <th>Points</th>
-          </tr>
-        </thead>
-        <tbody>
-        {% for team in teams %}
-          <tr>
-            <td>{{ team }}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        {% endfor %}
-        </tbody>
-      </table>
+    {% regroup standings by division as divisions %}
+    {% if divisions %}
+    {% for div in divisions %}
+      <details>
+        <summary>
+          <h2>{{ div.grouper.name }}</h2>
+        </summary>
+        <section>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Équipe</th>
+                <th>Matches</th>
+                <th>Victoires</th>
+                <th>Égalités</th>
+                <th>Défaites</th>
+                <th>Points</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for standings in div.list %}
+              <tr>
+                <td>{{ standings.position }}</td>
+                <td>{{ standings.team }}</td>
+                <td>{{ standings.matches }}</td>
+                <td>{{ standings.win }}</td>
+                <td>{{ standings.draw }}</td>
+                <td>{{ standings.lost }}</td>
+                <td>{{ standings.points }}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+        </section>
+      </details>
     {% endfor %}
+    {% endif %}
   </div>
 {% endblock content%}

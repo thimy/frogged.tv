@@ -1,3 +1,4 @@
+from .user import User
 from .static import Hero, Item
 from .patch import PatchVersion
 from .post import Post
@@ -8,4 +9,4 @@ from .emission import (
     VingtkmmrSubmission,
     TaymaputeSubmission,
 )
-from .league import Player, Team, Season, Division, Match, Game
+from .league import Player, Team, Season, Division, Match, Game, Standings

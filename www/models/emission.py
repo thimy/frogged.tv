@@ -1,7 +1,7 @@
 import time
 
 from django.db import models
-from django.contrib.auth.models import User
+from .user import User
 from .static import Hero, Item
 from .patch import PatchVersion
 from django.utils import timezone

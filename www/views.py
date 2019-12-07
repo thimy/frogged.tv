@@ -6,6 +6,7 @@ import logging
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from .models import (
+    User,
     Post,
     Emission,
     EmissionSubmission,
@@ -17,6 +18,7 @@ from .models import (
     Team,
     Match,
     Game,
+    Standings,
 )
 
 from django.conf import settings
@@ -182,8 +184,9 @@ def submission_vote(request):
 
 def league(request):
     season = Season.objects.all()[0]
+    divisions = Division.objects.filter(season=season)
+    standings = Standings.objects.filter(division__in=divisions).order_by("id")
+    print(standings)
     return render(
-        request,
-        "pages/league/index.html",
-        {"season": season, "divisions": Division.objects.filter(season__id=season.id)},
+        request, "pages/league/index.html", {"season": season, "standings": standings}
     )

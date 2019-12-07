@@ -124,8 +124,6 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-import time
-
 MARTOR_UPLOAD_PATH = "uploads/images/{}".format(time.strftime("%Y/%m/%d/"))
 MARTOR_UPLOAD_URL = "/api/uploader/"  # change to local uploader
 
@@ -146,6 +144,7 @@ os.path.join(BASE_DIR, "uploads")
 
 STEAM_API_KEY = os.getenv("STEAM_API_KEY")
 
-
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "home"
+
+AUTH_USER_MODEL = "www.User"

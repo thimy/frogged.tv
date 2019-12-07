@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.db import models
 from .models import (
+    User,
     Post,
     Hero,
     Item,
@@ -14,6 +15,7 @@ from .models import (
     Division,
     Match,
     Game,
+    Standings,
 )
 from martor.widgets import AdminMartorWidget
 
@@ -33,6 +35,7 @@ class EmissionAdmin(admin.ModelAdmin):
 #     }
 
 
+admin.site.register(User)
 admin.site.register(Post, PostAdmin)
 admin.site.register(Hero)
 admin.site.register(Item)
@@ -48,3 +51,4 @@ admin.site.register(Season)
 admin.site.register(Division)
 admin.site.register(Match)
 admin.site.register(Game)
+admin.site.register(Standings)
