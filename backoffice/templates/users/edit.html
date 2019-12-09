@@ -1,0 +1,22 @@
+{% extends 'layouts/dashboard.html' %}
+{% load static %}
+
+{% block extracss %}
+  <link href="{% static 'css/users.css' %}" rel="stylesheet">
+{% endblock extracss %}
+
+{% block content %}
+  <h2>Éditer l’utilisateur </h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form__group">
+      <label>{{ form.username.label }}</label>
+      {{ form.username }}
+    </div>
+    <div class="form__group">
+      <label>{{ form.email.label }}</label>
+      {{ form.email }}
+    </div>
+    <input type="submit" class="submit" value="Modifier l’utilisateur" />
+  </form>
+{% endblock content %}

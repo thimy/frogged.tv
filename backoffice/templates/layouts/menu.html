@@ -1,0 +1,7 @@
+<nav>
+  <ul class="dashboard__menu">
+    <li class="menu__item{% if request.path == '/users' %} menu__item--active{% endif %}">
+      <a href="{% url 'users' %}">Utilisateurs</a>
+    </li>
+  </ul>
+</nav>

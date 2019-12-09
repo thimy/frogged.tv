@@ -2,21 +2,3 @@ summary h2 {
   display: inline-block;
   vertical-align: middle;
 }
-
-table {
-  width: 100%;
-  border: 1px solid var(--black);
-  border-collapse: collapse;
-}
-
-th {
-  background: var(--black);
-  color: white;
-}
-
-th,
-td {
-  border: 1px solid var(--black);
-  padding: 0.25em 0.5em;
-  font-size: 0.75em;
-}

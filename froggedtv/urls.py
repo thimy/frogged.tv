@@ -13,6 +13,7 @@ urlpatterns = [
         views.LoginView.as_view(template_name="pages/login.html"),
         name="login",
     ),
+    path("dashboard/", include("backoffice.urls")),
     path("martor/", include("martor.urls")),
 ]
 

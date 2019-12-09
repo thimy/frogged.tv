@@ -13,9 +13,8 @@
   <link href="{% static 'css/webfonts.css' %}" rel="stylesheet">
   <link href="{% static 'css/buttons.css' %}" rel="stylesheet">
   <link href="{% static 'css/form.css' %}" rel="stylesheet">
-  <link href="{% static 'css/nav.css' %}" rel="stylesheet">
   <link href="{% static 'css/main.css' %}" rel="stylesheet">
-
+  <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
   <!-- Extra styles -->
   {% block extracss %}
   {% endblock %}
@@ -85,15 +84,11 @@
     </defs>
   </svg>
 
-  {% include 'layouts/nav.html' %}
-
-  {% block hero %}{% endblock %}
+  {% include 'layouts/menu.html' %}
 
   <main>
   {% block content %}{% endblock %}
   </main>
-
-  {% include 'layouts/footer.html' %}
 
   {% block extrajs %}
   {% endblock %}

@@ -1,0 +1,19 @@
+body {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+main {
+  padding: 2em;
+}
+
+nav {
+  width: auto;
+  background-color: #000;
+}
+
+nav ul {
+  display: block;
+  padding: 0;
+}
