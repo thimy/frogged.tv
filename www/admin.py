@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.db import models
 from .models import (
     User,
+    Category,
     Post,
     Hero,
     Item,
@@ -36,6 +37,7 @@ class EmissionAdmin(admin.ModelAdmin):
 
 
 admin.site.register(User)
+admin.site.register(Category)
 admin.site.register(Post, PostAdmin)
 admin.site.register(Hero)
 admin.site.register(Item)

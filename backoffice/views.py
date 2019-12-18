@@ -1,16 +1,74 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 
 from django.contrib import messages
 from django.contrib.messages import get_messages
 from django.contrib.auth.decorators import login_required
 
-from www.models import User
-from .forms import UserForm
+from www.models import Post, Category, User
+from .forms import PostForm, UserForm
+
+from django.db import IntegrityError
 
 
 @login_required
 def dashboard(request):
     return render(request, "pages/index.html")
+
+
+@login_required
+def posts(request):
+    messages = get_messages(request)
+    posts = reversed(Post.objects.all())
+    return render(request, "posts/index.html", {"posts": posts, "messages": messages})
+
+
+@login_required
+def post_new(request):
+    user = request.user
+    messages = get_messages(request)
+    form = PostForm(request.POST or None, request.FILES)
+
+    if request.method == "GET":
+        return render(request, "posts/new.html", {"form": form, "messages": messages})
+    else:
+        if form.is_valid():
+            form.author = user
+            form.save()
+            messages.success(request, "L’article a été créé avec succès !")
+            return redirect("posts_index")
+        else:
+            return render(request, "posts/new.html", {"form": form})
+    return render(request, "posts/new.html", {"form": form, "messages": messages})
+
+
+@login_required
+def post_edit(request, pk):
+    messages = get_messages(request)
+    post = Post.objects.get(pk=pk)
+    print(post)
+    form = PostForm(request.POST or None, request.FILES, instance=post)
+
+    if request.method == "GET":
+        return render(request, "posts/edit.html", {"form": form, "messages": messages})
+    else:
+        if form.is_valid():
+            form.save()
+            return redirect("posts_index")
+        else:
+            return render(request, "posts/edit.html", {"form": form})
+    return render(request, "posts/edit.html", {"form": form, "messages": messages})
+
+
+@login_required
+def categories(request):
+    messages = get_messages(request)
+    categories = reversed(Category.objects.all())
+    return render(
+        request,
+        "posts/categories.html",
+        {"categories": categories, "messages": messages},
+    )
 
 
 @login_required

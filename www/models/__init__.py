@@ -1,7 +1,7 @@
 from .user import User
 from .static import Hero, Item
 from .patch import PatchVersion
-from .post import Post
+from .post import Post, Category
 from .emission import (
     Emission,
     PatchVersion,

@@ -1,0 +1,41 @@
+{% extends 'layouts/dashboard.html' %}
+{% load static %}
+
+{% block martor_files %}
+  {% include 'plugins/martor.html' %}
+{% endblock %}
+
+{% block content %}
+  <h2>Éditer l’article</h2>
+  <form method="post">
+    {% if form.errors %}
+      {{ form.errors }}
+    {% endif %}
+    {% csrf_token %}
+    <div class="form__group">
+      <label>{{ form.title.label }}</label>
+      {{ form.title }}
+    </div>
+    <div class="form__group">
+      <label>{{ form.category.label }}</label>
+      {{ form.category }}
+    </div>
+    <div class="form__group">
+      <label>{{ form.cover.label }}</label>
+      {{ form.cover }}
+    </div>
+    <div class="form__group">
+      <label>{{ form.text.label }}</label>
+      {{ form.text }}
+    </div>
+    <div class="form__group">
+      <label>{{ form.author.label }}</label>
+      {{ form.author }}
+    </div>
+    <div class="form__group">
+      <label>{{ form.published_date.label }}</label>
+      {{ form.published_date }}
+    </div>
+    <input type="submit" class="submit" value="Enregistrer l’article" />
+  </form>
+{% endblock content %}

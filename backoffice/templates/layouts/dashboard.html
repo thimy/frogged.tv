@@ -8,7 +8,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>FroggedTV</title>
-
+  <link href="{% static 'plugins/css/ace.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'plugins/css/semantic.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'plugins/css/resizable.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'martor/css/martor.min.css' %}" rel="stylesheet" />
   <link href="{% static 'css/remedy.css' %}" rel="stylesheet">
   <link href="{% static 'css/webfonts.css' %}" rel="stylesheet">
   <link href="{% static 'css/buttons.css' %}" rel="stylesheet">
@@ -19,6 +22,8 @@
   {% block extracss %}
   {% endblock %}
 
+  {% block martor_files %}
+  {% endblock %}
   <!-- Polyfills -->
   <script type="text/javascript">
     if(/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
@@ -87,6 +92,13 @@
   {% include 'layouts/menu.html' %}
 
   <main>
+  {% if messages %}
+    <div class="notification success">
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+    </div>
+  {% endif %}
   {% block content %}{% endblock %}
   </main>
 

@@ -1,0 +1,38 @@
+{% extends 'layouts/dashboard.html' %}
+{% load static %}
+
+{% block extracss %}
+  <link href="{% static 'css/users.css' %}" rel="stylesheet">
+{% endblock extracss %}
+
+{% block content %}
+  <h2>Catégories</h2>
+  {% if messages %}
+    <div class="notification success">
+        {% for message in messages %}
+          {{ message }}
+        {% endfor %}
+    </div>
+  {% endif %}
+  <a class="button" href="{% url 'posts_index' %}">Retour aux articles</a>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Nom de la catégorie</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for category in categories %}
+      <tr>
+        <td>{{ category.id }}</td>
+        <td>{{ category.title }}</td>
+        <td>
+          <a class="button" href="{% url 'post_edit' pk=category.pk %}">modifier</a>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}
