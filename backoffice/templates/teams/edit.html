@@ -1,0 +1,30 @@
+{% extends 'layouts/dashboard.html' %}
+{% load static %}
+
+{% block extracss %}
+  <link href="{% static 'css/users.css' %}" rel="stylesheet">
+{% endblock extracss %}
+
+{% block content %}
+  <h2>Éditer l’équipe </h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form__group">
+      <label>{{ form.name.label }}</label>
+      {{ form.name }}
+    </div>
+    <div class="form__group">
+      <label>{{ form.tag.label }}</label>
+      {{ form.tag }}
+    </div>
+    <div class="form__group">
+      <label>{{ form.captain.label }}</label>
+      {{ form.captain }}
+    </div>
+    <div class="form__group">
+      <label>{{ form.status.label }}</label>
+      {{ form.status }}
+    </div>
+    <input type="submit" class="submit" value="Modifier l’utilisateur" />
+  </form>
+{% endblock content %}

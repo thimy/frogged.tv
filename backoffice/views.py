@@ -5,8 +5,8 @@ from django.contrib import messages
 from django.contrib.messages import get_messages
 from django.contrib.auth.decorators import login_required
 
-from www.models import Post, Category, User
-from .forms import PostForm, UserForm
+from www.models import Post, Category, User, Team
+from .forms import PostForm, UserForm, TeamForm
 
 from django.db import IntegrityError
 
@@ -90,6 +90,30 @@ def user_edit(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, "L’utilisateur a été modifié avec succès !")
-            return redirect("users")
+            return redirect("users_index")
 
     return render(request, "users/edit.html", {"user": user})
+
+
+@login_required
+def teams(request):
+    messages = get_messages(request)
+    teams = Team.objects.all()
+    return render(request, "teams/index.html", {"teams": teams, "messages": messages})
+
+
+@login_required
+def team_edit(request, pk):
+    team = Team.objects.get(pk=pk)
+    form = TeamForm(request.POST or None, instance=team)
+
+    if request.method == "GET":
+        return render(request, "teams/edit.html", {"team": team, "form": form})
+
+    else:
+        if form.is_valid():
+            form.save()
+            messages.success(request, "L’équipe a été modifiée avec succès !")
+            return redirect("teams_index")
+
+    return render(request, "teams/edit.html", {"team": team})

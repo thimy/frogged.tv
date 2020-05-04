@@ -6,17 +6,13 @@
 {% endblock extracss %}
 
 {% block content %}
-  <h2>Éditer l’utilisateur </h2>
+  <h2>Éditer la team </h2>
   <form method="post">
     {% csrf_token %}
     <div class="form__group">
-      <label>{{ form.username.label }}</label>
-      {{ form.username }}
+      <label>{{ form.name.label }}</label>
+      {{ form.name }}
     </div>
-    <div class="form__group">
-      <label>{{ form.email.label }}</label>
-      {{ form.email }}
-    </div>
-    <input type="submit" class="submit" value="Modifier l’utilisateur" />
+    <input type="submit" class="submit" value="Modifier la team" />
   </form>
 {% endblock content %}

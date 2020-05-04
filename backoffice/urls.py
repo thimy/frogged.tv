@@ -11,4 +11,6 @@ urlpatterns = [
     path("categories", views.categories, name="categories_index"),
     path("users", views.users, name="users_index"),
     path("users/edit/<int:pk>/", views.user_edit, name="user_edit"),
+    path("teams", views.teams, name="teams_index"),
+    path("teams/edit/<int:pk>/", views.team_edit, name="team_edit"),
 ]

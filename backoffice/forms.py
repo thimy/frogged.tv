@@ -1,6 +1,5 @@
 from django import forms
-from www.models import Post, User
-from datetime import datetime
+from www.models import Post, User, Team
 
 
 class PostForm(forms.ModelForm):
@@ -13,3 +12,9 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ("username", "email")
+
+
+class TeamForm(forms.ModelForm):
+    class Meta:
+        model = Team
+        fields = ("name", "tag", "status", "captain")
